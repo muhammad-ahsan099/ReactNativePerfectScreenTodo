@@ -65,21 +65,27 @@ const App = () => {
 
   const theme = isDarkTheme ? CustomDarkTheme : CustomDefaultTheme;
 
-  // const authState = useSelector(state => state.AuthReducer.isUserLoggedIn)
-  // console.log("Initial AuthState: ", authState);
+  const authState = useSelector(state => state.AuthReducer.isUserLoggedIn)
+  console.log("Initial AuthState: ", authState);
   return (
-    <Provider store={store}>
-      <NavigationContainer >
-        <PaperProvider theme={theme}>
+    <PaperProvider theme={theme}>
+      <NavigationContainer theme={theme}>
 
-          {/* <AuthStackScreen /> */}
-          <MainTab />
-          {/* <DeleteStudent /> */}
 
-        </PaperProvider>
+        {
+          authState !== false ? (
+            
+             <MainTab /> 
+          ) :
+            <AuthStackScreen />
+        }
+
+
+
       </NavigationContainer>
-    </Provider>
+    </PaperProvider>
   );
 };
 
 export default App;
+

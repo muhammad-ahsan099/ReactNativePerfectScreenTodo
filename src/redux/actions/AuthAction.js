@@ -30,7 +30,31 @@ export const doSignUp = (user) => async (dispatch) => {
   }
 };
 
-// Logout Function 
+// Login Function 
+
+export const doLogin = (email, password) => async (dispatch) => {
+    try {
+      
+      let payload = {email , password}
+      console.log("Payload Email: " , payload.email)
+      console.log("Payload Password: " , payload.password)
+
+
+      const userCredential = await axios.post(`${endPoint}/auth/login`,  payload );
+
+      var user = userCredential;
+      console.log("User Data, (Email and Password) ", user);
+      dispatch({
+        type: LOGIN,
+        payload: user,
+      });
+    } catch (error) {
+        alert(JSON.stringify(error))
+      console.log("error", error);
+    }
+  };
+  
+  
 
 
 

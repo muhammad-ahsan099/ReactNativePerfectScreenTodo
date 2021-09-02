@@ -1,8 +1,9 @@
 
-import { LOGIN , SIGN_UP , LOGOUT } from "../type/Type";
+import { LOGIN, SIGN_UP, LOGOUT } from "../type/Type";
 
 let initialState = {
     error: '',
+    isUserLoggedIn: false ,
     users: []
 }
 
@@ -19,6 +20,17 @@ function AuthReducer(state = initialState, action) {
                 ...state,
                 users: newusers,
             }
+
+        case LOGIN: {
+            // if user login than what?
+            return {
+                ...state,
+                isUserLoggedIn: true,
+                user: action.payload
+            };
+        }
+
+
         default:
             return state;
     }

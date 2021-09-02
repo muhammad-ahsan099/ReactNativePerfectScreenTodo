@@ -27,10 +27,12 @@ import {
   DefaultTheme as NavigationDefaultTheme,
   DarkTheme as NavigationDarkTheme
 } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
+
 import SplashScreen from './src/screen/splashscreen/SplashScreen';
 import { Provider } from 'react-redux';
 import store from './src/config/Store';
-import RootStackScreen from './src/navigation/RootStack'
+import AuthStackScreen from './src/navigation/AuthStack'
 import MainTab from './src/tab/MainTab';
 import DeleteStudent from './src/students/deletestudent/DeleteStudent';
 
@@ -63,13 +65,15 @@ const App = () => {
 
   const theme = isDarkTheme ? CustomDarkTheme : CustomDefaultTheme;
 
+  // const authState = useSelector(state => state.AuthReducer.isUserLoggedIn)
+  // console.log("Initial AuthState: ", authState);
   return (
     <Provider store={store}>
       <NavigationContainer >
         <PaperProvider theme={theme}>
 
-          <RootStackScreen />
-          {/* <MainTab /> */}
+          {/* <AuthStackScreen /> */}
+          <MainTab />
           {/* <DeleteStudent /> */}
 
         </PaperProvider>

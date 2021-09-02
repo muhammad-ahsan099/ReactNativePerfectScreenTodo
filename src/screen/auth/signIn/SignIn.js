@@ -19,6 +19,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import Feather from 'react-native-vector-icons/Feather';
 
 import { useTheme } from 'react-native-paper';
+import UseSignIn from './UseSignIn';
 
 // import { AuthContext } from '../../../components/Context';
 
@@ -28,15 +29,8 @@ import { useTheme } from 'react-native-paper';
 
 const SignIn = ({navigation}) => {
 
+const [data , email , password ,setData , setEmail,setPassword,doLoginUser] = UseSignIn()
 
-    const [data, setData] = React.useState({
-        username: '',
-        password: '',
-        check_textInputChange: false,
-        secureTextEntry: true,
-        isValidUser: true,
-        isValidPassword: true,
-    });
 
     const { colors } = useTheme();
 
@@ -149,8 +143,10 @@ const SignIn = ({navigation}) => {
                         color: colors.text
                     }]}
                     autoCapitalize="none"
-                    onChangeText={(val) => textInputChange(val)}
+                    // onChangeText={(val) => textInputChange(val)}
                     onEndEditing={(e)=>handleValidUser(e.nativeEvent.text)}
+                    onChangeText = { (text) => setEmail(text)}
+                    value={email}
                 />
                 {data.check_textInputChange ? 
                 <Animatable.View
@@ -164,11 +160,13 @@ const SignIn = ({navigation}) => {
                 </Animatable.View>
                 : null}
             </View>
+
             { data.isValidUser ? null : 
             <Animatable.View animation="fadeInLeft" duration={500}>
             <Text style={styles.errorMsg}>Username must be 4 characters long.</Text>
             </Animatable.View>
             }
+            <Text>Email: {email } </Text>
             
 
             <Text style={[styles.text_footer, {
@@ -189,7 +187,8 @@ const SignIn = ({navigation}) => {
                         color: colors.text
                     }]}
                     autoCapitalize="none"
-                    onChangeText={(val) => handlePasswordChange(val)}
+                    // onChangeText={(val) => handlePasswordChange(val)}
+                    onChangeText= {  (text) => {setPassword(text)} }
                 />
                 <TouchableOpacity
                     onPress={updateSecureTextEntry}
@@ -214,6 +213,7 @@ const SignIn = ({navigation}) => {
             <Text style={styles.errorMsg}>Password must be 8 characters long.</Text>
             </Animatable.View>
             }
+            <Text>Password:  {password}</Text>
             
 
             <TouchableOpacity>
@@ -223,6 +223,7 @@ const SignIn = ({navigation}) => {
                 <TouchableOpacity
                     style={styles.signIn}
                     // onPress={() => {loginHandle( data.username, data.password )}}
+                    onPress = {doLoginUser}
                 >
                 <LinearGradient
                     colors={['#08d4c4', '#01ab9d']}

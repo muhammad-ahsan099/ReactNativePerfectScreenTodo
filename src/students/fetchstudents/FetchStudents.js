@@ -1,6 +1,6 @@
 
 import  React , {useEffect} from 'react';
-import { ScrollView, Button, Text, View } from 'react-native';
+import { ScrollView, Button, Text, View , ActivityIndicator } from 'react-native';
 import { DataTable } from 'react-native-paper';
 import { UseFetchStudents } from './UseFetchStudents';
 
@@ -16,7 +16,13 @@ const FetchStudents = ({ navigation }) => {
         setPage(0);
     }, [numberOfItemsPerPage]);
 
-
+    if (load) {
+        return(
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <ActivityIndicator size="large" />
+        </View>
+        )
+    }
     return (
         <ScrollView>
             <ScrollView horizontal={true}>
@@ -39,7 +45,6 @@ const FetchStudents = ({ navigation }) => {
 
                     {
                         students.map((item, index) => {
-                            console.log("All Fetch Students in Map: " , item)
                             return(
                             <DataTable.Row style={{ borderBottomWidth: 0 }} >
                                 <DataTable.Cell style={{width: 50}}   >{item.name}</DataTable.Cell>
@@ -52,11 +57,7 @@ const FetchStudents = ({ navigation }) => {
                             )
                             })
 
-                    }
-                
-                     { load && <Text>Loading...</Text>}
-
-
+                    }            
                     <DataTable.Pagination
                         page={page}
                         numberOfPages={Math.ceil(items.length / numberOfItemsPerPage)}

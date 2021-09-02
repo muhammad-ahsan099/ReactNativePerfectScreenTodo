@@ -19,6 +19,14 @@ const DeleteStudent = ({ navigation }) => {
     }, [numberOfItemsPerPage]);
 
 
+    if (load) {
+        return (
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <ActivityIndicator size="large" />
+            </View>
+        )
+    }
+
     return (
         <ScrollView style={styles.container}>
 
@@ -37,22 +45,23 @@ const DeleteStudent = ({ navigation }) => {
 
                 </DataTable.Header>
 
-
                 {
                     students.map((item, index) => {
+                        console.log('ID: ', item._id)
                         return (
                             <DataTable.Row style={{ borderBottomWidth: 0 }} >
-                                <DataTable.Cell style={{ width: 50 }}   >{item.name}</DataTable.Cell>
-                                <DataTable.Cell style={{ width: 25 }}   >{item.rollno}</DataTable.Cell>
+                                <DataTable.Cell style={{ width: 50 }} key="{name}"  >{item.name}</DataTable.Cell>
+                                <DataTable.Cell style={{ width: 25 }} key="{rollno}"  >{item.rollno}</DataTable.Cell>
                                 <DataTable.Cell style={{ width: 40 }}   >
 
                                     <View style={styles.button}>
-                                        <TouchableOpacity 
-                                            onPress={deleteHandler}
+                                        <TouchableOpacity
+                                            onPress={() => deleteHandler(item._id)}
                                         >
                                             <LinearGradient
-                                                colors={['#08d4c4', '#01ab9d']}
-                                                //    colors={['#e52d27, #b31217']}
+                                                colors={['#e52d27', '#b31217']}
+                                                //    colors={['#e52d27 ' , '#b31217']}
+                                                // #a40606 , #d98324
                                                 style={styles.signIn}
                                             >
                                                 <Text style={styles.textSign}>Delete</Text>
@@ -85,12 +94,7 @@ const DeleteStudent = ({ navigation }) => {
                     selectPageDropdownLabel={'Rows per page'}
                 />
 
-                {load &&
 
-                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                        <ActivityIndicator size="large" />
-                    </View>
-                }
             </DataTable>
 
 

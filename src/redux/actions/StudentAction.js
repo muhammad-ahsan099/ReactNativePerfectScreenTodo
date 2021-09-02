@@ -94,7 +94,7 @@ export const deleteStudent =  (_id ,setLoading) => async (dispatch , previouStat
     {
         params: { _id }
     });
-    console.log("Data Delete from MongoDB" , student.data );
+    // console.log("Data Delete from MongoDB" , student.data );
         dispatch({
             type: DELETE_STUDENT ,
             payload: _id

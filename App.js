@@ -32,6 +32,7 @@ import { Provider } from 'react-redux';
 import store from './src/config/Store';
 import RootStackScreen from './src/navigation/RootStack'
 import MainTab from './src/tab/MainTab';
+import DeleteStudent from './src/students/deletestudent/DeleteStudent';
 
 
 
@@ -69,6 +70,7 @@ const App = () => {
 
           {/* <RootStackScreen /> */}
           <MainTab />
+          {/* <DeleteStudent /> */}
 
         </PaperProvider>
       </NavigationContainer>

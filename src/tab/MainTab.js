@@ -46,11 +46,11 @@ const HomeStackScreen = ({ navigation }) => (
 );
 
 
-const SettingsStack = createNativeStackNavigator();
+const DeleteStack = createNativeStackNavigator();
 
 
-const SettingsStackScreen = ({ navigation }) => (
-    <SettingsStack.Navigator screenOptions={{
+const DeleteStackScreen = ({ navigation }) => (
+    <DeleteStack.Navigator screenOptions={{
         headerStyle: {
             backgroundColor: '#009387',
         },
@@ -59,10 +59,10 @@ const SettingsStackScreen = ({ navigation }) => (
             fontWeight: 'bold'
         }
     }}>
-        <SettingsStack.Screen name="AddStudent" component={AddStudent}  />
-        <SettingsStack.Screen name="Details" component={DetailsScreen} />
+        <DeleteStack.Screen name="DeleteStudent" component={DeleteStudent}  options={{title: 'Delete Student'}} />
+        {/* <SettingsStack.Screen name="Details" component={DetailsScreen} /> */}
 
-    </SettingsStack.Navigator>
+    </DeleteStack.Navigator>
 );
 
 
@@ -128,7 +128,7 @@ export default function MainTab() {
             />
             <Tab.Screen
                 name="Delete"
-                component={DeleteStudent}
+                component={DeleteStackScreen}
                 options={{
                     tabBarLabel: 'Delete',
                     // tabBarColor: '#694fad',

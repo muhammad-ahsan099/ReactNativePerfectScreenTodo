@@ -9,7 +9,8 @@ import {
     Platform,
     StyleSheet,
     ScrollView,
-    StatusBar
+    StatusBar,
+    ActivityIndicator
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import LinearGradient from 'react-native-linear-gradient';
@@ -182,7 +183,7 @@ const AddStudent = ({navigation}) => {
                         color:'#fff'
                     }]}>
                         {/* Submit */}
-                     {ctaLoading ? "Loading..." : "Submit"}
+                     {ctaLoading ? <ActivityIndicator size='large' /> : "Submit"}
                      </Text>
                 </LinearGradient>
                 </TouchableOpacity>

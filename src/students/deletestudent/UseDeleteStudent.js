@@ -34,7 +34,7 @@ export function UseDeleteStudent() {
     // const students = useSelector(state => state.studentReducer.students)
     const students = useSelector(state => state.StudentReducer.students)
 
-    console.log("Students from studentReducer", students);
+    // console.log("Students from studentReducer", students);
     
 
     useEffect(() => {
@@ -43,7 +43,7 @@ export function UseDeleteStudent() {
 
     
     const deleteHandler = (_id) => {
-        console.log("Delete Handler is called");
+        console.log("Delete Handler is called" , _id);
         dispatch(deleteStudent(_id, setLoading))
     };
 

@@ -3,12 +3,12 @@
 import {combineReducers} from 'redux';
 import StudentReducer from './reducers/StudentReducer';
 
-// import AuthReducer from './reducers/';
+import AuthReducer from './reducers/AuthReducer';
 
 const RootReducer =   combineReducers({
 
     StudentReducer  ,
-    // AuthReducer
+    AuthReducer
 })
 
 export default RootReducer;

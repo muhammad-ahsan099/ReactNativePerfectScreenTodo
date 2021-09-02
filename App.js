@@ -68,8 +68,8 @@ const App = () => {
       <NavigationContainer >
         <PaperProvider theme={theme}>
 
-          {/* <RootStackScreen /> */}
-          <MainTab />
+          <RootStackScreen />
+          {/* <MainTab /> */}
           {/* <DeleteStudent /> */}
 
         </PaperProvider>

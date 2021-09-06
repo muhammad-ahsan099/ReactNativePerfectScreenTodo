@@ -6,7 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import SplashScreen from '../screen/splashscreen/SplashScreen';
 import SignIn from '../screen/auth/signIn/SignIn'
 import SignUp from '../screen/auth/signup/SignUp';
-import { useSelector } from 'react-redux';
+
 
 
 
